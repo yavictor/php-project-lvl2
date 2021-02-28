@@ -1,0 +1,13 @@
+{
+    "name": "hexlet/code",
+    "description": "cli config difference generator",
+    "authors": [
+        {
+            "name": "yv",
+            "email": "yavictor37@yandex.ru"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
+}
