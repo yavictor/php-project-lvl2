@@ -35,18 +35,18 @@ function generateConfigData($paths)
 function renderConfig($el)
 {
   //print_r($el);
-  if (is_bool($el['value'])) {
-    $el['value'] = $el['value'] === true ? 'true' : 'false';
-  }
-  if ($el['state'] === 'removed') {
-    return "  - {$el['key']}: {$el['value']}";
-  } if ($el['state'] === 'added') {
-    return "  + {$el['key']}: {$el['value']}";
-  } if ($el['state'] === 'unchanged') {
-    return "    {$el['key']}: {$el['value']}";
-  } if ($el['state'] === 'changed') {
-    return "  - {$el['key']}: {$el['value'][0]}\n  + {$el['key']}: {$el['value'][1]}";
-  }
+    if (is_bool($el['value'])) {
+        $el['value'] = $el['value'] === true ? 'true' : 'false';
+    }
+    if ($el['state'] === 'removed') {
+        return "  - {$el['key']}: {$el['value']}";
+    } if ($el['state'] === 'added') {
+        return "  + {$el['key']}: {$el['value']}";
+    } if ($el['state'] === 'unchanged') {
+        return "    {$el['key']}: {$el['value']}";
+    } if ($el['state'] === 'changed') {
+        return "  - {$el['key']}: {$el['value'][0]}\n  + {$el['key']}: {$el['value'][1]}";
+    }
 }
 
 function genDiff($args)
@@ -56,10 +56,9 @@ function genDiff($args)
     //print_r($data);
     $result = "{\n";
     foreach ($data as $el) {
-      $result .= renderConfig($el) . "\n";
+        $result .= renderConfig($el) . "\n";
     };
     $result .= "}";
 
     return $result;
-
 }
