@@ -1,6 +1,14 @@
 {
     "name": "hexlet/code",
     "description": "cli config difference generator",
+    "autoload": {
+        "psr-4": {
+            "Php\\Package\\": "src"
+        },
+        "files": [
+            "src/GenDiff.php"
+        ]
+    },
     "authors": [
         {
             "name": "yv",

@@ -2,7 +2,8 @@
 
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
+use function Differ\Differ\genDiff;
 
 $doc = <<<'DOCOPT'
 Generate diff
@@ -18,6 +19,8 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOCOPT;
 
-$result = Docopt::handle($doc, array('version' => '1.0.0'));
-foreach ($result as $k => $v)
-    echo $k . ': ' . json_encode($v) . PHP_EOL;
+$config = Docopt::handle($doc, array('version' => 'gendiff 1.0.0'));
+if ($config['<firstFile>'] && $config['<secondFile>']) {
+    $result = gendiff([$config['<firstFile>'], $config['<secondFile>']]);
+    print_r(($result . PHP_EOL));
+}
