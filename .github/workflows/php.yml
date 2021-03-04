@@ -1,8 +1,20 @@
 name: PHP CI
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+    tags:
+      - '!*' # Do not execute on tags
+    paths:
+      - src/*
+      - test/*
+      - '*.json'
+      - yarn.lock
+  pull_request:
+    paths:
+      - '!*.MD
+  
 
 jobs:
   build:
@@ -11,13 +23,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup PHP
-        # Action gives to setup the PHP environment to test application
-        # https://github.com/shivammathur/setup-php
-      uses: shivammathur/setup-php@v2
-      with:
-        # Specify the PHP version
-        php-version: '7.4'
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
@@ -31,8 +37,9 @@ jobs:
       run: make lint
      
     - name: Test project
-        
-      uses: paambaati/codeclimate-action@v2.6.0
+      run: make test
+
+    - uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
       env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
