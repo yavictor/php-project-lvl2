@@ -34,6 +34,12 @@ function generateConfigData($paths)
 function renderConfig($el)
 {
   //print_r($el);
+//    $resultOptions = [
+//        'removed' => "  - {$el['key']}: {$el['value']}",
+//        'added' => "  + {$el['key']}: {$el['value']}",
+//        'unchanged' => "    {$el['key']}: {$el['value']}",
+//        'changed' => "  - {$el['key']}: {$el['value'][0]}\n  + {$el['key']}: {$el['value'][1]}"
+//    ];
     if (is_bool($el['value'])) {
         $el['value'] = $el['value'] === true ? 'true' : 'false';
     }
