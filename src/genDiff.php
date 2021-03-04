@@ -28,7 +28,6 @@ function generateConfigData($paths)
             }
         }
     }, $mergedKeys);
-    //var_dump($mergedKeys);
     return $mergedKeys;
 }
 
@@ -53,7 +52,6 @@ function genDiff($args)
 {
     $data = generateConfigData($args);
     sort($data);
-    //print_r($data);
     $result = "{\n";
     foreach ($data as $el) {
         $result .= renderConfig($el) . "\n";
