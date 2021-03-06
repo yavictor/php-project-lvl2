@@ -10,12 +10,18 @@ class GendiffTest extends TestCase
 {
     public function testGenerateDifference(): void
     {
-        $configFiles = [
+        $jsonFiles = [
           __DIR__ . '/fixtures/file1.json',
           __DIR__ . '/fixtures/file2.json'
         ];
-        $result = genDiff($configFiles);
+        $ymlFiles = [
+          __DIR__ . '/fixtures/filepath1.yml',
+          __DIR__ . '/fixtures/filepath2.yml'
+        ];
+        $resultJson = genDiff($jsonFiles);
+        $resultYml = genDiff($ymlFiles);
         $expected = file_get_contents(__DIR__ . '/fixtures/plainResult.txt');
-        $this->assertEquals($result, $expected);
+        $this->assertEquals($resultJson, $expected);
+        $this->assertEquals($resultYml, $expected);
     }
 }
