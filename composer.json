@@ -8,7 +8,8 @@
             "Php\\Package\\Tests\\": "tests"
         },
         "files": [
-            "src/GenDiff.php"
+            "src/GenDiff.php",
+            "src/Parsers/parsers.php"
         ]
     },
     "scripts": {

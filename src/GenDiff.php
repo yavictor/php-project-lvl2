@@ -2,10 +2,12 @@
 
 namespace Differ\Differ;
 
+use function Differ\Differ\Parsers\parse;
+
 function generateConfigData($paths)
 {
-    $firstConfig = json_decode(file_get_contents($paths[0]), true);
-    $secondConfig = json_decode(file_get_contents($paths[1]), true);
+    $firstConfig = $paths[0];
+    $secondConfig = $paths[1];
     $mergedKeys = array_keys(array_merge($firstConfig, $secondConfig));
     $mergedKeys = array_map(function ($key) use ($firstConfig, $secondConfig) {
         if (array_key_exists($key, $firstConfig) && !array_key_exists($key, $secondConfig)) {
@@ -33,13 +35,6 @@ function generateConfigData($paths)
 
 function renderConfig($el)
 {
-  //print_r($el);
-//    $resultOptions = [
-//        'removed' => "  - {$el['key']}: {$el['value']}",
-//        'added' => "  + {$el['key']}: {$el['value']}",
-//        'unchanged' => "    {$el['key']}: {$el['value']}",
-//        'changed' => "  - {$el['key']}: {$el['value'][0]}\n  + {$el['key']}: {$el['value'][1]}"
-//    ];
     if (is_bool($el['value'])) {
         $el['value'] = $el['value'] === true ? 'true' : 'false';
     }
@@ -56,7 +51,8 @@ function renderConfig($el)
 
 function genDiff($args)
 {
-    $data = generateConfigData($args);
+    $data = parse($args);
+    $data = generateConfigData($data);
     sort($data);
     $result = "{\n";
     foreach ($data as $el) {
