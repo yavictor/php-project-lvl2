@@ -25,10 +25,15 @@ Options:
   -h --help                     Show this screen
   -v --version                  Show version
   --format <fmt>                Report format [default: stylish]
+
+Report formats:
+  <fmt>
+      pretty                 Show changes in files marked with symbols "+/-" 
+      plain                  Show changes in files explained by the text
+      json                   Show changes in files as a JSON string
 DOCOPT;
 
-$config = Docopt::handle($doc, array('version' => 'gendiff 1.0.0'));
-if ($config['<firstFile>'] && $config['<secondFile>']) {
-    $result = gendiff([$config['<firstFile>'], $config['<secondFile>']]);
-    print_r(($result . PHP_EOL));
-}
+$config = Docopt::handle($doc, ['version' => 'gendiff 1.0.0']);
+$result = gendiff([$config['<firstFile>'], $config['<secondFile>']], $config['--format']);
+print_r(($result . PHP_EOL));
+
