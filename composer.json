@@ -28,7 +28,7 @@
           "src/Formatters.php"
         ]
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "scripts": {
       "phpcs": "phpcs -- --standard=PSR12 src bin tests",
       "test": "phpunit tests"
