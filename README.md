@@ -10,8 +10,15 @@ Command line interface util that can show difference between two configuration f
 
 ### Install
 
-1. clone repository
-2. make install
+For global install:
+> composer global require yavictor/php_project2
+
+For local use:
+> composer global require yavictor/php_project2
+
+Then istall depandencies:
+
+> make install
 
 ### Compare two JSONs
 
