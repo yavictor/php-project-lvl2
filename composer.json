@@ -16,6 +16,9 @@
           "src/Formatters.php"
         ]
     },
+    "bin": [
+      "bin/gendiff"
+    ],
     "scripts": {
       "phpcs": "phpcs -- --standard=PSR12 src bin tests",
       "test": "phpunit tests"
