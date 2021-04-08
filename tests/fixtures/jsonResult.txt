@@ -30,7 +30,9 @@
                 "key": "setting3",
                 "type": "updated",
                 "oldValue": true,
-                "newValue": null,
+                "newValue": {
+                    "key": "value"
+                },
                 "children": null
             },
             {
@@ -64,7 +66,7 @@
                             {
                                 "key": "wow",
                                 "type": "updated",
-                                "oldValue": "",
+                                "oldValue": "too much",
                                 "newValue": "so much",
                                 "children": null
                             }
@@ -136,13 +138,85 @@
         "type": "added",
         "oldValue": null,
         "newValue": {
-            "fee": 100500,
             "deep": {
                 "id": {
                     "number": 45
                 }
-            }
+            },
+            "fee": 100500
         },
         "children": null
+    },
+    {
+        "key": "group4",
+        "type": "complex",
+        "oldValue": null,
+        "newValue": null,
+        "children": [
+            {
+                "key": "default",
+                "type": "updated",
+                "oldValue": null,
+                "newValue": "",
+                "children": null
+            },
+            {
+                "key": "foo",
+                "type": "updated",
+                "oldValue": 0,
+                "newValue": null,
+                "children": null
+            },
+            {
+                "key": "isNested",
+                "type": "updated",
+                "oldValue": false,
+                "newValue": "none",
+                "children": null
+            },
+            {
+                "key": "key",
+                "type": "added",
+                "oldValue": null,
+                "newValue": false,
+                "children": null
+            },
+            {
+                "key": "nest",
+                "type": "complex",
+                "oldValue": null,
+                "newValue": null,
+                "children": [
+                    {
+                        "key": "bar",
+                        "type": "updated",
+                        "oldValue": "",
+                        "newValue": 0,
+                        "children": null
+                    },
+                    {
+                        "key": "isNested",
+                        "type": "removed",
+                        "oldValue": true,
+                        "newValue": null,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "key": "someKey",
+                "type": "added",
+                "oldValue": null,
+                "newValue": true,
+                "children": null
+            },
+            {
+                "key": "type",
+                "type": "updated",
+                "oldValue": "bas",
+                "newValue": "bar",
+                "children": null
+            }
+        ]
     }
 ]

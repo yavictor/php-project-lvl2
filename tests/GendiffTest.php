@@ -54,14 +54,14 @@ class GenDiffTest extends TestCase
     {
         return [
           'default output for json files' => [
-              'nested1.json',
-              'nested2.json',
-              'nestedResult.txt'
+              'file1.json',
+              'file2.json',
+              'diff.stylish'
           ],
           'default output for yaml files' => [
-              'nested1.yaml',
-              'nested2.yaml',
-              'nestedResult.txt'
+              'file1.yaml',
+              'file2.yaml',
+              'diff.stylish'
           ]
         ];
     }
@@ -70,20 +70,20 @@ class GenDiffTest extends TestCase
     {
         return [
             'output for stylish' => [
-              'nested1.yaml',
-              'nested2.yaml',
+              'file1.yaml',
+              'file2.yaml',
               'stylish',
-              'nestedResult.txt'
+              'diff.stylish'
             ],
             'output for plain' => [
-              'nested1.json',
-              'nested2.json',
+              'file1.json',
+              'file2.json',
               'plain',
-              'plainResult.txt'
+              'diff.plain'
             ],
             'output for json' => [
-              'nested1.json',
-              'nested2.json',
+              'file1.json',
+              'file2.json',
               'json',
               'jsonResult.txt'
             ]
