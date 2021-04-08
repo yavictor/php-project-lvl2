@@ -2,18 +2,7 @@ name: PHP CI
 
 on:
   push:
-    branches:
-      - master
-    tags:
-      - '!*' # Do not execute on tags
-    paths:
-      - src/*
-      - test/*
-      - '*.json'
-      - yarn.lock
-  pull_request:
-    paths:
-      - '!*.MD'
+    branches: main
 
 jobs:
   build:
@@ -41,6 +30,8 @@ jobs:
         run: make lint
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: make test
       - name: Run test & publish code coverage
         uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
