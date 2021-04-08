@@ -69,9 +69,24 @@ class GenDiffTest extends TestCase
     public function differentFormatsProviders(): array
     {
         return [
-            'output stylish' => ['nested1.yaml', 'nested2.yaml', 'stylish', 'nestedResult.txt'],
-            'output plain' => ['nested1.json', 'nested2.json', 'plain', 'plainResult.txt'],
-            'output json' => ['nested1.json', 'nested2.json', 'json', 'jsonResult.txt']
+            'output for stylish' => [
+              'nested1.yaml',
+              'nested2.yaml',
+              'stylish',
+              'nestedResult.txt'
+            ],
+            'output for plain' => [
+              'nested1.json',
+              'nested2.json',
+              'plain',
+              'plainResult.txt'
+            ],
+            'output for json' => [
+              'nested1.json',
+              'nested2.json',
+              'json',
+              'jsonResult.txt'
+            ]
         ];
     }
 }
