@@ -2,6 +2,15 @@
     "name": "hexlet/code",
     "description": "cli config difference generator",
     "license": "MIT",
+    "authors": [
+      {
+          "name": "yv",
+          "email": "yavictor37@yandex.ru"
+      }
+    ],
+    "bin": [
+      "bin/gendiff"
+    ],
     "autoload": {
         "psr-4": {
             "Php\\Package\\": "src",
@@ -10,25 +19,19 @@
         "files": [
           "src/DiffGenerator.php",
           "src/Parsers.php",
+          "src/Parsers/JsonParser.php",
+          "src/Parsers/YamlParser.php",
           "src/Formatters/Stylish.php",
           "src/Formatters/Plain.php",
           "src/Formatters/Json.php",
           "src/Formatters.php"
         ]
     },
-    "bin": [
-      "bin/gendiff"
-    ],
     "scripts": {
       "phpcs": "phpcs -- --standard=PSR12 src bin tests",
       "test": "phpunit tests"
     },
-    "authors": [
-        {
-            "name": "yv",
-            "email": "yavictor37@yandex.ru"
-        }
-    ],
+
     "require": {
       "php": ">=7.4",
       "docopt/docopt": "^1.0",

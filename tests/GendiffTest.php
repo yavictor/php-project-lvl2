@@ -19,14 +19,11 @@ class GenDiffTest extends TestCase
      */
     public function testDefaultFormatOutput(string $fileName1, string $fileName2, string $expectedFileName): void
     {
-        $outputFilePath = $this->makeFilepaths($expectedFileName);
-        $expectedOutput = file_get_contents($outputFilePath);
-
+        //$outputFilePath = $this->makeFilepaths($expectedFileName);
+        $expectedOutput = file_get_contents($this->makeFilepaths($expectedFileName));
         $inputFilePath1 = $this->makeFilepaths($fileName1);
         $inputFilePath2 = $this->makeFilepaths($fileName2);
-
         $diffResult = genDiff($inputFilePath1, $inputFilePath2);
-
         $this->assertSame($expectedOutput, $diffResult);
     }
 
@@ -39,14 +36,11 @@ class GenDiffTest extends TestCase
         string $format,
         string $expectedFileName
     ): void {
-        $outputFilePath = $this->makeFilepaths($expectedFileName);
-        $expectedOutput = trim(file_get_contents($outputFilePath));
-
+        //$outputFilePath = $this->makeFilepaths($expectedFileName);
+        $expectedOutput = file_get_contents($this->makeFilepaths($expectedFileName));
         $inputFilePath1 = $this->makeFilepaths($fileName1);
         $inputFilePath2 = $this->makeFilepaths($fileName2);
-
         $diffResult = genDiff($inputFilePath1, $inputFilePath2, $format);
-
         $this->assertSame($expectedOutput, $diffResult);
     }
 
