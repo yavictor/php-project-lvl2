@@ -53,11 +53,6 @@ class GenDiffTest extends TestCase
     public function defaultOutputProviders(): array
     {
         return [
-          'default output for json files' => [
-              'file1.json',
-              'file2.json',
-              'diff.stylish'
-          ],
           'default output for yaml files' => [
               'file1.yaml',
               'file2.yaml',
