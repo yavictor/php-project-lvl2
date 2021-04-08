@@ -28,12 +28,17 @@ Options:
 
 Report formats:
   <fmt>
-      pretty                 Show changes in files marked with symbols "+/-" 
+      stylish                 Show changes in files marked with symbols "+/-" 
       plain                  Show changes in files explained by the text
       json                   Show changes in files as a JSON string
 DOCOPT;
 
 $config = Docopt::handle($doc, ['version' => 'gendiff 1.0.0']);
-$result = gendiff([$config['<firstFile>'], $config['<secondFile>']], $config['--format']);
+[
+  '<firstFile>' => $firstFile,
+  '<secondFile>' => $secondFile,
+  '--format' => $format
+] = $config;
+$result = gendiff($firstFile, $secondFile, $format);
 print_r(($result . PHP_EOL));
 

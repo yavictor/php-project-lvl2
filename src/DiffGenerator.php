@@ -13,7 +13,7 @@ function read(string $filePath): string
         throw new \Exception("The file {$filePath} does not exists.");
     }
 
-    return (string) file_get_contents($filePath);
+    return (string) file_get_contents(realpath($filePath));
 }
 
 function genDiff(string $firstFilePath, string $secondFilePath, string $format = 'stylish'): string
