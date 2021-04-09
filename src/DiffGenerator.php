@@ -3,6 +3,7 @@
 namespace Differ\Differ;
 
 use Exception;
+
 use function Funct\Collection\sortBy;
 use function Funct\Collection\union;
 use function Differ\Parsers\parseConfig;

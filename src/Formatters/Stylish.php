@@ -3,6 +3,7 @@
 namespace Differ\Formatters\Stylish;
 
 use Exception;
+
 use function Funct\Collection\flattenAll;
 
 function render(array $diff): string
