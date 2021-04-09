@@ -30,7 +30,6 @@
     },
     "minimum-stability": "dev",
     "require": {
-      "php": ">=7.4",
       "docopt/docopt": "^1.0",
       "symfony/yaml": "^5.2",
       "funct/funct": "^1.5"
