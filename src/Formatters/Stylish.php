@@ -2,6 +2,7 @@
 
 namespace Differ\Formatters\Stylish;
 
+use Exception;
 use function Funct\Collection\flattenAll;
 
 function render(array $diff): string
@@ -21,25 +22,25 @@ function render(array $diff): string
             switch ($type) {
                 case 'complex':
                     $indentAfter = makeIndent($depth);
-                    return ["{$indent}    {$key}: {", $iter($children, $depth + 1), "{$indentAfter}}"];
+                    return ["$indent    $key: {", $iter($children, $depth + 1), "$indentAfter}"];
                 case 'added':
                     $preparedNewValue = prepareValue($newValue, $depth);
-                    return "{$indent}  + {$key}: {$preparedNewValue}";
+                    return "$indent  + $key: $preparedNewValue";
                 case 'removed':
                     $preparedOldValue = prepareValue($oldValue, $depth);
-                    return "{$indent}  - {$key}: {$preparedOldValue}";
+                    return "$indent  - $key: $preparedOldValue";
                 case 'unchanged':
                     $preparedNewValue = prepareValue($newValue, $depth);
-                    return "{$indent}    {$key}: {$preparedNewValue}";
+                    return "$indent    $key: $preparedNewValue";
                 case 'updated':
                     $preparedOldValue = prepareValue($oldValue, $depth);
                     $preparedNewValue = prepareValue($newValue, $depth);
-                    $addedLine = "{$indent}  + {$key}: {$preparedNewValue}";
-                    $deletedLine = "{$indent}  - {$key}: {$preparedOldValue}";
+                    $addedLine = "$indent  + $key: $preparedNewValue";
+                    $deletedLine = "$indent  - $key: $preparedOldValue";
                     return implode("\n", [$deletedLine, $addedLine]);
                 default:
-                    throw new \Exception("This type: {$type} is not supported.");
-            };
+                    throw new Exception("This type: $type is not supported.");
+            }
         }, $diff);
     };
     return implode("\n", flattenAll(['{', $iter($diff, 1), '}']));
@@ -62,11 +63,11 @@ function prepareValue($value, int $depth): string
 
     $lines = array_map(function ($key) use ($value, $depth, $indent): string {
         $childrenValue = prepareValue($value->$key, $depth + 1);
-            return "{$indent}    {$key}: {$childrenValue}";
+            return "$indent    $key: $childrenValue";
     }, $keys);
 
     $preparedValue = implode("\n", $lines);
-    return "{\n{$preparedValue}\n{$indent}}";
+    return "{\n$preparedValue\n$indent}";
 }
 
 function makeIndent(int $depth): string

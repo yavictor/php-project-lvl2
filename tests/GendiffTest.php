@@ -1,6 +1,6 @@
 <?php
 
-namespace Differ\Tests;
+namespace Differ\Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -47,11 +47,16 @@ class GendiffTest extends TestCase
     public function defaultOutputProviders(): array
     {
         return [
-          'default output for yaml files' => [
-              'file1.yaml',
-              'file2.yaml',
+          'default output for json files' => [
+              'file1.json',
+              'file2.json',
               'diff.stylish'
-          ]
+          ],
+          'default output for yaml files' => [
+                'file1.yaml',
+                'file2.yaml',
+                'diff.stylish'
+            ]
         ];
     }
 
@@ -74,7 +79,7 @@ class GendiffTest extends TestCase
               'file1.json',
               'file2.json',
               'json',
-              'jsonResult.txt'
+              'result.json'
             ]
         ];
     }

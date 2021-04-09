@@ -2,6 +2,7 @@
 
 namespace Differ\Differ;
 
+use Exception;
 use function Funct\Collection\sortBy;
 use function Funct\Collection\union;
 use function Differ\Parsers\parseConfig;
@@ -10,7 +11,7 @@ use function Differ\Formatters\format;
 function read(string $filePath): string
 {
     if (!file_exists($filePath)) {
-        throw new \Exception("The file {$filePath} does not exists.");
+        throw new Exception("The file $filePath does not exists.");
     }
 
     return (string) file_get_contents(realpath($filePath));
@@ -36,7 +37,7 @@ function generateTree(object $firstData, object $secondData): array
     $unionKeys = union($firstConfigKeys, $secondConfigKeys);
     $sortedKeys = array_values(sortBy($unionKeys, fn($key) => $key));
 
-    $buildTree = array_map(function ($key) use ($firstData, $secondData): array {
+    return array_map(function ($key) use ($firstData, $secondData): array {
         if (!property_exists($firstData, $key)) {
             return createNode($key, 'added', null, $secondData->$key);
         }
@@ -51,8 +52,6 @@ function generateTree(object $firstData, object $secondData): array
         }
         return createNode($key, 'updated', $firstData->$key, $secondData->$key);
     }, $sortedKeys);
-
-    return $buildTree;
 }
 
 function createNode(string $key, string $type, $oldValue, $newValue, $children = null): array

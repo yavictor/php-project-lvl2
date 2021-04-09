@@ -2,6 +2,7 @@
 
 namespace Differ\Parsers;
 
+use Exception;
 use Symfony\Component\Yaml\Yaml;
 
 function parseConfig(string $data, string $type): object
@@ -13,6 +14,6 @@ function parseConfig(string $data, string $type): object
         case 'yml':
             return Yaml::parse($data, Yaml::PARSE_OBJECT_FOR_MAP);
         default:
-            throw new \Exception("Unsupported parser type: {$type}");
+            throw new Exception("Unsupported parser type: $type");
     }
 }

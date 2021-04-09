@@ -2,6 +2,7 @@
 
 namespace Differ\Formatters\Plain;
 
+use Exception;
 use function Funct\Collection\flattenAll;
 
 function render(array $diff): string
@@ -23,17 +24,17 @@ function render(array $diff): string
                     return $iter($children, [...$ancestors, $key]);
                 case 'added':
                     $preparedNewValue = prepareValue($newValue);
-                    return "Property '{$pathToProperty}' was added with value: {$preparedNewValue}";
+                    return "Property '$pathToProperty' was added with value: $preparedNewValue";
                 case 'removed':
-                    return "Property '{$pathToProperty}' was removed";
+                    return "Property '$pathToProperty' was removed";
                 case 'unchanged':
                     return [];
                 case 'updated':
                     $preparedOldValue = prepareValue($oldValue);
                     $preparedNewValue = prepareValue($newValue);
-                    return "Property '{$pathToProperty}' was updated. From {$preparedOldValue} to {$preparedNewValue}";
+                    return "Property '$pathToProperty' was updated. From $preparedOldValue to $preparedNewValue";
                 default:
-                    throw new \Exception("This type: {$type} is not supported.");
+                    throw new Exception("This type: $type is not supported.");
             }
         }, $diff);
     };
