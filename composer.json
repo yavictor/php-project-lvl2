@@ -29,11 +29,6 @@
         ]
     },
     "minimum-stability": "dev",
-    "scripts": {
-      "phpcs": "phpcs -- --standard=PSR12 src bin tests",
-      "test": "phpunit tests"
-    },
-
     "require": {
       "php": ">=7.4",
       "docopt/docopt": "^1.0",
