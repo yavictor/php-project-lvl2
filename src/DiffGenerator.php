@@ -8,13 +8,14 @@ use function Functional\sort;
 use function Differ\Parsers\parseConfig;
 use function Differ\Formatters\format;
 
-function read(string $filePath): string|false
+function read(string $path): string
 {
+    $absolutePath = (string) realpath($path);
     if (!file_exists($filePath)) {
         throw new Exception("The file $filePath does not exists.");
     }
 
-    return file_get_contents(realpath($filePath));
+    return (string) file_get_contents($absolutePath);
 }
 
 function genDiff(string $firstFilePath, string $secondFilePath, string $format = 'stylish'): string
