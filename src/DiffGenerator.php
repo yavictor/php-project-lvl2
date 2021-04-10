@@ -12,7 +12,7 @@ function read(string $path): string
 {
     $absolutePath = (string) realpath($path);
     if (!file_exists($path)) {
-        throw new Exception("The file $filePath does not exists.");
+        throw new Exception("The file $path does not exists.");
     }
 
     return (string) file_get_contents($absolutePath);
