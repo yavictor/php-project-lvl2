@@ -4,8 +4,7 @@ namespace Differ\Differ;
 
 use Exception;
 
-use function Funct\Collection\sortBy;
-use function Funct\Collection\union;
+use function Functional\sort;
 use function Differ\Parsers\parseConfig;
 use function Differ\Formatters\format;
 
@@ -35,8 +34,8 @@ function generateTree(object $firstData, object $secondData): array
 {
     $firstConfigKeys = array_keys(get_object_vars($firstData));
     $secondConfigKeys = array_keys(get_object_vars($secondData));
-    $unionKeys = union($firstConfigKeys, $secondConfigKeys);
-    $sortedKeys = array_values(sortBy($unionKeys, fn($key) => $key));
+    $unionKeys = array_unique(array_merge($firstConfigKeys, $secondConfigKeys));
+    $sortedKeys = sort($unionKeys, fn($left, $right): int => $left <=> $right);
 
     return array_map(function ($key) use ($firstData, $secondData): array {
         if (!property_exists($firstData, $key)) {

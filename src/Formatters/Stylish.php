@@ -4,7 +4,7 @@ namespace Differ\Formatters\Stylish;
 
 use Exception;
 
-use function Funct\Collection\flattenAll;
+use function Functional\flatten;
 
 function render(array $diff): string
 {
@@ -44,7 +44,7 @@ function render(array $diff): string
             }
         }, $diff);
     };
-    return implode("\n", flattenAll(['{', $iter($diff, 1), '}']));
+    return implode("\n", flatten(['{', $iter($diff, 1), '}']));
 }
 
 function prepareValue($value, int $depth): string
