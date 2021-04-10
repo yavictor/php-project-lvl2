@@ -11,7 +11,7 @@ use function Differ\Formatters\format;
 function read(string $path): string
 {
     $absolutePath = (string) realpath($path);
-    if (!file_exists($filePath)) {
+    if (!file_exists($path)) {
         throw new Exception("The file $filePath does not exists.");
     }
 
