@@ -14,7 +14,7 @@ function read(string $filePath): string
         throw new Exception("The file $filePath does not exists.");
     }
 
-    return file_get_contents(realpath($filePath));
+    return file_get_contents($filePath);
 }
 
 function genDiff(string $firstFilePath, string $secondFilePath, string $format = 'stylish'): string
