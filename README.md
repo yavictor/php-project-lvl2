@@ -40,3 +40,23 @@ same as
 > gendiff --format json first second
 
 [![asciicast](https://asciinema.org/a/JeUVeE89ThSvqlPH18TMgkdk6.svg)](https://asciinema.org/a/JeUVeE89ThSvqlPH18TMgkdk6)
+
+# Show difference between two 'yml' files
+
+[![asciicast](https://asciinema.org/a/zmZPN5zknY4W8qgg7nc68cOGG.svg)](https://asciinema.org/a/zmZPN5zknY4W8qgg7nc68cOGG)
+
+# Show difference between two 'ini' files
+
+[![asciicast](https://asciinema.org/a/8tynktIS4MeP3ZXgO0t3F04va.svg)](https://asciinema.org/a/8tynktIS4MeP3ZXgO0t3F04va)
+
+# Show difference between two 'json' nested files, with default stylish output
+
+[![asciicast](https://asciinema.org/a/cLQJFsVVzYurnm98bsWPQgpyY.svg)](https://asciinema.org/a/cLQJFsVVzYurnm98bsWPQgpyY)
+
+# Show difference between same 'json' nested files, with plain output
+
+[![asciicast](https://asciinema.org/a/b1ro1wnXQhOQw8hCiqAo237UX.svg)](https://asciinema.org/a/b1ro1wnXQhOQw8hCiqAo237UX)
+
+# Show difference between same 'json' nested files, with json output, showing internal data representation
+
+[![asciicast](https://asciinema.org/a/FAEWs2srH7F3qPhc2tazTUrk2.svg)](https://asciinema.org/a/FAEWs2srH7F3qPhc2tazTUrk2)
